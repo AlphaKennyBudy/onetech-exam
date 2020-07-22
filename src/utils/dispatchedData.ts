@@ -8,8 +8,8 @@ export function getProductTable(products: ProductType[], dispatch: Dispatch) {
     onDelete: () => {
       dispatch(deleteProduct(product.id));
     },
-    onChange: (product: ProductType) => {
-      dispatch(changeProduct(product));
+    onChange: (newProduct: ProductType) => {
+      dispatch(changeProduct({ ...newProduct, id: product.id })); //FIXME: Fix id assigning
     },
   }));
 }

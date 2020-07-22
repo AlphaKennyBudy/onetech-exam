@@ -2,7 +2,7 @@ import React from "react";
 import { List } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { stateType, CategoryType } from "../store/types";
-import { getCategoryList } from "../utils/dispatchedProductTable";
+import { getCategoryList } from "../utils/dispatchedData";
 import CategoryItem from "./CategoryItem";
 
 function CategoriesList() {

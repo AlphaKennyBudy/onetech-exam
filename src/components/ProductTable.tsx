@@ -3,9 +3,10 @@ import { Table, Button, Tag } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { stateType } from "../store/types";
 import Column from "antd/lib/table/Column";
-import { getProductTable } from "../utils/dispatchedProductTable";
+import { getProductTable } from "../utils/dispatchedData";
 import DeleteModal from "./DeleteModal";
 import { filterProducts } from "../store/actions";
+import ProductFormModal from "./ProductFormModal";
 
 function ProductTable() {
   const state = useSelector((state: stateType) => state.productState);
@@ -53,7 +54,12 @@ function ProductTable() {
               buttonText="Удалить"
               icon={undefined}
             />
-            <Button onClick={onChange}>Изменить</Button>
+            <ProductFormModal
+              title="Изменить товар"
+              onSave={onChange}
+              buttonText="Изменить"
+              icon={undefined}
+            />
           </>
         )}
       />
