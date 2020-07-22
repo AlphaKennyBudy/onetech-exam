@@ -8,6 +8,7 @@ import {
   CategoryType,
   FETCH_PRODUCTS,
   FILTER_PRODUCTS,
+  CHANGE_PRODUCT,
 } from "../types";
 
 export const addCategory = (category: CategoryType) => ({
@@ -20,12 +21,18 @@ export const deleteCategory = (id: number) => ({
   id,
 });
 
-export const fetchCategories = () => ({
+export const fetchCategories = (categories: CategoryType[]) => ({
   type: FETCH_CATEGORIES,
+  categories,
 });
 
 export const addProduct = (product: ProductType) => ({
   type: ADD_PRODUCT,
+  product,
+});
+
+export const changeProduct = (product: ProductType) => ({
+  type: CHANGE_PRODUCT,
   product,
 });
 
@@ -34,8 +41,9 @@ export const deleteProduct = (id: number) => ({
   id,
 });
 
-export const fetchProducts = () => ({
+export const fetchProducts = (products: ProductType[]) => ({
   type: FETCH_PRODUCTS,
+  products,
 });
 
 export const filterProducts = (category: string) => ({

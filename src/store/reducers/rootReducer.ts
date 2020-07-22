@@ -3,8 +3,8 @@ import productReducer from "./productReducer";
 import categoryReducer from "./categoryReducer";
 
 const rootReducer = combineReducers({
-  productStore: productReducer,
-  categoryStore: categoryReducer,
+  productState: productReducer,
+  categoryState: categoryReducer,
 });
 
 export default rootReducer;

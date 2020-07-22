@@ -20,4 +20,5 @@ export const products: ProductType[] = [
 export const categories: CategoryType[] = [
   { id: 1, name: "Laptop" },
   { id: 2, name: "Car" },
+  { id: 3, name: "No category" },
 ];

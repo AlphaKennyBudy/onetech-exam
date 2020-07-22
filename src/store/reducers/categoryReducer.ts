@@ -15,7 +15,7 @@ const categoryReducer = (state: CategoryType[] = categories, action: any) => {
         (category: CategoryType) => category.id !== action.id
       );
     case FETCH_CATEGORIES:
-        
+      return action.categories;
     default:
       return state;
   }
