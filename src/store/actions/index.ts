@@ -7,6 +7,7 @@ import {
   DELETE_PRODUCT,
   CategoryType,
   FETCH_PRODUCTS,
+  FILTER_PRODUCTS,
 } from "../types";
 
 export const addCategory = (category: CategoryType) => ({
@@ -35,4 +36,9 @@ export const deleteProduct = (id: number) => ({
 
 export const fetchProducts = () => ({
   type: FETCH_PRODUCTS,
+});
+
+export const filterProducts = (category: string) => ({
+  type: FILTER_PRODUCTS,
+  category,
 });
