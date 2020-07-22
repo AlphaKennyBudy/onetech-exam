@@ -2,9 +2,9 @@ import React from "react";
 import { categoryItemPropsType } from "../store/types";
 import DeleteModal from "./DeleteModal";
 import { DeleteFilled } from "@ant-design/icons";
-import { Tag } from "antd";
 import { useDispatch } from "react-redux";
-import { filterProducts } from "../store/actions";
+import { setFilter } from "../store/actions";
+import { Button } from "antd";
 
 function CategoryItem({ name, onDelete }: categoryItemPropsType) {
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ function CategoryItem({ name, onDelete }: categoryItemPropsType) {
         buttonText=""
         icon={<DeleteFilled />}
       />
-      <Tag onClick={() => dispatch(filterProducts(name))}>{name}</Tag>
+      <Button onClick={() => dispatch(setFilter(name))}>{name}</Button>
     </>
   );
 }

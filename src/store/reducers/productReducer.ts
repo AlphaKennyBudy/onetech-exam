@@ -3,7 +3,6 @@ import {
   ADD_PRODUCT,
   DELETE_PRODUCT,
   FETCH_PRODUCTS,
-  FILTER_PRODUCTS,
   CHANGE_PRODUCT,
 } from "../types";
 import { products } from "../../services/products";
@@ -18,10 +17,6 @@ const productReducer = (state: ProductType[] = products, action: any) => {
       );
     case DELETE_PRODUCT:
       return state.filter((product: ProductType) => product.id !== action.id);
-    case FILTER_PRODUCTS:
-      return products.filter(
-        (product: ProductType) => product.category === action.category
-      );
     case FETCH_PRODUCTS:
       return action.products;
     default:

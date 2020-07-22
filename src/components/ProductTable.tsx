@@ -1,17 +1,19 @@
 import React from "react";
-import { Table, Button, Tag } from "antd";
+import { Table, Tag } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { stateType } from "../store/types";
 import Column from "antd/lib/table/Column";
 import { getProductTable } from "../utils/dispatchedData";
 import DeleteModal from "./DeleteModal";
-import { filterProducts } from "../store/actions";
 import ProductFormModal from "./ProductFormModal";
 
 function ProductTable() {
-  const state = useSelector((state: stateType) => state.productState);
+  const { productState, filterState } = useSelector((state: stateType) => ({
+    productState: state.productState,
+    filterState: state.filterState,
+  }));
   const dispatch = useDispatch();
-  const productTable = getProductTable(state, dispatch);
+  const productTable = getProductTable(productState, filterState, dispatch);
   return (
     <Table
       dataSource={productTable}
@@ -29,11 +31,7 @@ function ProductTable() {
         dataIndex="category"
         key="category"
         render={(category) => (
-          <Tag
-            key={category}
-            color="blue"
-            onClick={() => dispatch(filterProducts(category))}
-          >
+          <Tag key={category} color="blue">
             {category}
           </Tag>
         )}
@@ -45,20 +43,21 @@ function ProductTable() {
       />
       <Column title="Цена" dataIndex="sellPrice" key="sellPrice" />
       <Column
-        render={({ onDelete, onChange, id }) => (
+        render={(product) => (
           <>
             <DeleteModal
               title=""
-              text={`Точно удалить товар id${id}?`}
-              onDelete={onDelete}
+              text={`Точно удалить товар id${product.id}?`}
+              onDelete={product.onDelete}
               buttonText="Удалить"
               icon={undefined}
             />
             <ProductFormModal
               title="Изменить товар"
-              onSave={onChange}
+              onSave={product.onChange}
               buttonText="Изменить"
               icon={undefined}
+              product={product}
             />
           </>
         )}

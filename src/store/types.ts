@@ -6,7 +6,8 @@ export const ADD_PRODUCT = "ADD_PRODUCT";
 export const CHANGE_PRODUCT = "CHANGE_PRODUCT";
 export const DELETE_PRODUCT = "DELETE_PRODUCT";
 export const FETCH_PRODUCTS = "FETCH_PRODUCTS";
-export const FILTER_PRODUCTS = "FETCH_PRODUCTS";
+
+export const SET_FILTER = "SET_FILTER";
 
 export type ProductType = {
   id: number;
@@ -24,6 +25,7 @@ export type CategoryType = {
 export type stateType = {
   productState: ProductType[];
   categoryState: CategoryType[];
+  filterState: string;
 };
 
 export type deleteModalPropsType = {
@@ -37,4 +39,18 @@ export type deleteModalPropsType = {
 export type categoryItemPropsType = {
   name: string;
   onDelete: () => void;
+};
+
+export type productFormModalPropsType = {
+  title: string;
+  onSave: (values: ProductType) => void;
+  buttonText: string;
+  product: undefined | ProductType;
+  icon: undefined | React.ReactNode;
+};
+
+export type categoryModalType = {
+  title: string;
+  onSave: (values: CategoryType) => void;
+  buttonText: string;
 };

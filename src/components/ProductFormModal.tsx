@@ -10,9 +10,18 @@ import {
 import { Button, Modal } from "antd";
 import ProductSchema from "../utils/schemas/ProductSchema";
 import { useSelector } from "react-redux";
-import { stateType, CategoryType } from "../store/types";
+import {
+  stateType,
+  CategoryType,
+  productFormModalPropsType,
+} from "../store/types";
 
-function ProductFormModal({ title, onSave, buttonText }: any) {
+function ProductFormModal({
+  title,
+  onSave,
+  buttonText,
+  product,
+}: productFormModalPropsType) {
   const [state, setState] = useState({
     ModalText: "",
     visible: false,
@@ -59,12 +68,16 @@ function ProductFormModal({ title, onSave, buttonText }: any) {
         footer={[<Button></Button>]} //Просто заглушка
       >
         <Formik
-          initialValues={{
-            category: "",
-            name: "",
-            purchasePrice: undefined,
-            sellPrice: undefined,
-          }}
+          initialValues={
+            product
+              ? product
+              : {
+                  name: undefined,
+                  purchasePrice: undefined,
+                  sellPrice: undefined,
+                  category: undefined,
+                }
+          }
           validationSchema={ProductSchema}
           onSubmit={(values) => handleOk(values)}
         >
