@@ -50,7 +50,7 @@ function CategoryModal({ onSave, buttonText, title }: categoryModalType) {
         footer={[<Button></Button>]} //Просто заглушка
       >
         <Formik
-          initialValues={{ id: Math.random(), name: "" }}
+          initialValues={{ name: "" }}
           validationSchema={CategorySchema}
           onSubmit={(values) => handleOk(values)}
         >

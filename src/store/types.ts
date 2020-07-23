@@ -10,7 +10,7 @@ export const FETCH_PRODUCTS = "FETCH_PRODUCTS";
 export const SET_FILTER = "SET_FILTER";
 
 export type ProductType = {
-  id: number;
+  _id: number;
   name: string;
   purchasePrice: number;
   sellPrice: number;
@@ -18,7 +18,7 @@ export type ProductType = {
 };
 
 export type CategoryType = {
-  id: number;
+  _id: number;
   name: string;
 };
 

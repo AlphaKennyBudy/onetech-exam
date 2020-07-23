@@ -1,13 +1,13 @@
 import styled from "styled-components";
-import { Tag } from "antd";
 
 export const Wrapper = styled.div`
   margin: 0 auto;
+  margin-top: 10px;
   width: 90vw;
-  height: 1px;
+  height: 100vh;
   min-height: 100vh;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* justify-content: center; */
 `;

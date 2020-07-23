@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "antd/dist/antd.css";
 import { Row, Col, Divider } from "antd";
 import { Wrapper } from "../../styles";
@@ -6,11 +6,20 @@ import ProductTable from "../../components/ProductTable";
 import CategoriesList from "../../components/CategoriesList";
 import ProductFormModal from "../../components/ProductFormModal";
 import { useDispatch } from "react-redux";
-import { addProduct, addCategory } from "../../store/actions";
+import {
+  addProduct,
+  addCategory,
+  fetchCategories,
+  fetchProducts,
+} from "../../store/actions";
 import CategoryModal from "../../components/CategoryModal";
 
 function MainPage() {
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchCategories());
+    dispatch(fetchProducts());
+  }, []);
   return (
     <Wrapper>
       <Row>

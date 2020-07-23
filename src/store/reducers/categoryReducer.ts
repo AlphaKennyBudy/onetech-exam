@@ -4,15 +4,14 @@ import {
   DELETE_CATEGORY,
   FETCH_CATEGORIES,
 } from "../types";
-import { categories } from "../../services/products";
 
-const categoryReducer = (state: CategoryType[] = categories, action: any) => {
+const categoryReducer = (state: CategoryType[] = [], action: any) => {
   switch (action.type) {
     case ADD_CATEGORY:
       return [...state, action.category];
     case DELETE_CATEGORY:
       return state.filter(
-        (category: CategoryType) => category.id !== action.id
+        (category: CategoryType) => category._id !== action.id
       );
     case FETCH_CATEGORIES:
       return action.categories;

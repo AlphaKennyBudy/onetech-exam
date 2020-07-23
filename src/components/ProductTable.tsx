@@ -24,7 +24,7 @@ function ProductTable() {
         emptyText: "No Products",
       }}
     >
-      <Column title="ID" dataIndex="id" key="id" />
+      <Column title="ID" dataIndex="_id" key="id" />
       <Column title="Название товара" dataIndex="name" key="name" />
       <Column
         title="Категория"
@@ -47,7 +47,7 @@ function ProductTable() {
           <>
             <DeleteModal
               title=""
-              text={`Точно удалить товар id${product.id}?`}
+              text={`Точно удалить товар id${product._id}?`}
               onDelete={product.onDelete}
               buttonText="Удалить"
               icon={undefined}

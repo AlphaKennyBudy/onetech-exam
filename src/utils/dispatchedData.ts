@@ -1,6 +1,13 @@
 import { ProductType, CategoryType } from "../store/types";
-import { Dispatch } from "redux";
+import { Dispatch, AnyAction } from "redux";
+import { ThunkDispatch } from "redux-thunk";
 import { deleteProduct, changeProduct, deleteCategory } from "../store/actions";
+import {
+  deleteCategoryAPI,
+  deleteProductAPI,
+  changeProductAPI,
+} from "../services/api.service";
+import { Result } from "antd";
 
 export function getProductTable(
   products: ProductType[],
@@ -14,10 +21,14 @@ export function getProductTable(
     .map((product: ProductType) => ({
       ...product,
       onDelete: () => {
-        dispatch(deleteProduct(product.id));
+        deleteProductAPI(product._id).then(() =>
+          dispatch(deleteProduct(product._id))
+        );
       },
       onChange: (newProduct: ProductType) => {
-        dispatch(changeProduct({ ...newProduct, id: product.id })); //FIXME: Fix id assigning
+        changeProductAPI(newProduct).then((result: ProductType) => {
+          dispatch(changeProduct(result));
+        });
       },
     }));
 }
@@ -29,7 +40,9 @@ export function getCategoryList(
   return categories.map((category: CategoryType) => ({
     ...category,
     onDelete: () => {
-      dispatch(deleteCategory(category.id));
+      deleteCategoryAPI(category._id).then(() =>
+        dispatch(deleteCategory(category._id))
+      );
     },
   }));
 }
