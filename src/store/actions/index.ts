@@ -19,6 +19,7 @@ import {
   deleteProductAPI,
 } from "../../services/api.service";
 import { Dispatch } from "redux";
+import { toast } from "react-toastify";
 
 export const addCategory = (category: CategoryType) => (dispatch: Dispatch) => {
   addCategoryAPI(category)
@@ -28,7 +29,8 @@ export const addCategory = (category: CategoryType) => (dispatch: Dispatch) => {
         category: category,
       });
     })
-    .catch((error) => console.error(error));
+    .then(() => toast.success("Успешно добавлено!"))
+    .catch((error) => toast.error(error.message));
 };
 
 export const deleteCategory = (id: number) => ({
@@ -44,13 +46,14 @@ export const fetchCategories = () => (dispatch: Dispatch) => {
         categories,
       });
     })
-    .catch((error) => console.error(error));
+    .catch((error) => toast.error(error.message));
 };
 
 export const addProduct = (product: ProductType) => (dispatch: Dispatch) => {
   addProductAPI(product)
     .then((product) => dispatch({ type: ADD_PRODUCT, product }))
-    .catch((error) => console.error(error));
+    .then(() => toast.success("Успешно добавлено!"))
+    .catch((error) => toast.error(error.message));
 };
 
 export const changeProduct = (product: ProductType) => ({
@@ -66,7 +69,7 @@ export const deleteProduct = (id: number) => ({
 export const fetchProducts = () => (dispatch: Dispatch) => {
   fetchProductsAPI()
     .then((products) => dispatch({ type: FETCH_PRODUCTS, products }))
-    .catch((error) => console.error(error));
+    .catch((error) => toast.error(error.message));
 };
 
 export const setFilter = (filter: string) => ({

@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import "antd/dist/antd.css";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 import { Row, Col, Divider } from "antd";
 import { Wrapper } from "../../styles";
 import ProductTable from "../../components/ProductTable";
@@ -13,12 +15,17 @@ import {
   fetchProducts,
 } from "../../store/actions";
 import CategoryModal from "../../components/CategoryModal";
+import store from "../../store/store";
 
 function MainPage() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchCategories());
     dispatch(fetchProducts());
+    let state = store.getState();
+    store.subscribe(() => {
+      let newState = store.getState();
+    });
   }, []);
   return (
     <Wrapper>
@@ -48,6 +55,7 @@ function MainPage() {
           <ProductTable />
         </Col>
       </Row>
+      <ToastContainer autoClose={2000} />
     </Wrapper>
   );
 }

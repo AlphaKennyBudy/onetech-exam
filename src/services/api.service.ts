@@ -7,7 +7,14 @@ export async function addProductAPI(product: ProductType) {
     method: "POST",
     body: JSON.stringify(product),
     headers: { "Content-Type": "application/json; charset=UTF-8" },
-  }).then((response) => response.json());
+  }).then(async (response) => {
+    if (response.ok) {
+      return response.json();
+    } else {
+      const error = await response.json();
+      throw new Error(error.message);
+    }
+  });
 }
 
 export async function changeProductAPI(product: ProductType) {
@@ -15,13 +22,27 @@ export async function changeProductAPI(product: ProductType) {
     method: "PATCH",
     body: JSON.stringify(product),
     headers: { "Content-Type": "application/json; charset=UTF-8" },
-  }).then((response) => response.json());
+  }).then(async (response) => {
+    if (response.ok) {
+      return response.json();
+    } else {
+      const error = await response.json();
+      throw new Error(error.message);
+    }
+  });
 }
 
 export async function deleteProductAPI(id: number) {
   return fetch(`${API_URL}/products/${id}`, {
     method: "DELETE",
-  }).then((response) => response.json());
+  }).then(async (response) => {
+    if (response.ok) {
+      return response.json();
+    } else {
+      const error = await response.json();
+      throw new Error(error.message);
+    }
+  });
 }
 
 export async function fetchProductsAPI() {
@@ -33,15 +54,36 @@ export async function addCategoryAPI(category: CategoryType) {
     method: "POST",
     body: JSON.stringify(category),
     headers: { "Content-Type": "application/json; charset=UTF-8" },
-  }).then((response) => response.json());
+  }).then(async (response) => {
+    if (response.ok) {
+      return response.json();
+    } else {
+      const error = await response.json();
+      throw new Error(error.message);
+    }
+  });
 }
 
 export async function deleteCategoryAPI(id: number) {
   return fetch(`${API_URL}/categories/${id}`, {
     method: "DELETE",
-  }).then((response) => response.json());
+  }).then(async (response) => {
+    if (response.ok) {
+      return response.json();
+    } else {
+      const error = await response.json();
+      throw new Error(error.message);
+    }
+  });
 }
 
 export async function fetchCategoriesAPI() {
-  return fetch(`${API_URL}/categories`).then((response) => response.json());
+  return fetch(`${API_URL}/categories`).then(async (response) => {
+    if (response.ok) {
+      return response.json();
+    } else {
+      const error = await response.json();
+      throw new Error(error.message);
+    }
+  });
 }
