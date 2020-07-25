@@ -8,6 +8,7 @@ import ProductTable from "../../components/ProductTable";
 import CategoriesList from "../../components/CategoriesList";
 import ProductFormModal from "../../components/ProductFormModal";
 import { useDispatch } from "react-redux";
+import { isEqual } from "lodash";
 import {
   addProduct,
   addCategory,
@@ -25,6 +26,13 @@ function MainPage() {
     let state = store.getState();
     store.subscribe(() => {
       let newState = store.getState();
+      if (!isEqual(state.categoryState, newState.categoryState)) {
+        dispatch(fetchProducts());
+      }
+      if (!isEqual(state.productState, newState.productState)) {
+        dispatch(fetchCategories());
+      }
+      state = newState;
     });
   }, []);
   return (
