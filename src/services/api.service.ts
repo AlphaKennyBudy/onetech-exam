@@ -1,6 +1,6 @@
 import { ProductType, CategoryType } from "../store/types";
 
-const API_URL = "http://localhost:5000";
+const API_URL = "https://onetech-exam-api.now.sh";
 
 export async function addProductAPI(product: ProductType) {
   return fetch(`${API_URL}/products`, {
