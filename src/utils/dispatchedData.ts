@@ -1,10 +1,5 @@
 import { ProductType, CategoryType } from "../store/types";
-import {
-  deleteProduct,
-  changeProduct,
-  deleteCategory,
-  fetchProducts,
-} from "../store/actions";
+import { deleteProduct, changeProduct, deleteCategory } from "../store/actions";
 import {
   deleteCategoryAPI,
   deleteProductAPI,

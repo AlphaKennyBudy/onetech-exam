@@ -1,10 +1,12 @@
 import {
   ProductType,
+} from "../types";
+import {
   ADD_PRODUCT,
   DELETE_PRODUCT,
   FETCH_PRODUCTS,
-  CHANGE_PRODUCT,
-} from "../types";
+  CHANGE_PRODUCT
+} from "../actions/actionTypes";
 
 const productReducer = (state: ProductType[] = [], action: any) => {
   switch (action.type) {

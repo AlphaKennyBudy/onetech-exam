@@ -1,14 +1,3 @@
-export const ADD_CATEGORY = "ADD_CATEGORY";
-export const DELETE_CATEGORY = "DELETE_CATEGORY";
-export const FETCH_CATEGORIES = "FETCH_CATEGORIES";
-
-export const ADD_PRODUCT = "ADD_PRODUCT";
-export const CHANGE_PRODUCT = "CHANGE_PRODUCT";
-export const DELETE_PRODUCT = "DELETE_PRODUCT";
-export const FETCH_PRODUCTS = "FETCH_PRODUCTS";
-
-export const SET_FILTER = "SET_FILTER";
-
 export type ProductType = {
   _id: number;
   name: string;

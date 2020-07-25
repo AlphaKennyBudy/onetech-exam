@@ -1,22 +1,24 @@
 import {
+  ProductType,
+  CategoryType,
+} from "../types";
+import {
   ADD_CATEGORY,
   DELETE_CATEGORY,
   FETCH_CATEGORIES,
-  ProductType,
+
   ADD_PRODUCT,
   DELETE_PRODUCT,
-  CategoryType,
+
   FETCH_PRODUCTS,
   CHANGE_PRODUCT,
-  SET_FILTER,
-} from "../types";
+  SET_FILTER
+} from "./actionTypes";
 import {
   addCategoryAPI,
-  deleteCategoryAPI,
   fetchCategoriesAPI,
   fetchProductsAPI,
   addProductAPI,
-  deleteProductAPI,
 } from "../../services/api.service";
 import { Dispatch } from "redux";
 import { toast } from "react-toastify";

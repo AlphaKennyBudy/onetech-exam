@@ -34,7 +34,7 @@ function MainPage() {
       }
       state = newState;
     });
-  }, []);
+  }, [dispatch]);
   return (
     <Wrapper>
       <Row>

@@ -1,9 +1,11 @@
 import {
   CategoryType,
+} from "../types";
+import {
   ADD_CATEGORY,
   DELETE_CATEGORY,
-  FETCH_CATEGORIES,
-} from "../types";
+  FETCH_CATEGORIES
+} from "../actions/actionTypes";
 
 const categoryReducer = (state: CategoryType[] = [], action: any) => {
   switch (action.type) {

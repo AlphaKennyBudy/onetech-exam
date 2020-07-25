@@ -1,4 +1,4 @@
-import { SET_FILTER } from "../types";
+import { SET_FILTER } from "../actions/actionTypes";
 
 const filterReducer = (state: string = "", action: any) => {
   switch (action.type) {
